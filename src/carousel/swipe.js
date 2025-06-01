@@ -25,13 +25,13 @@ class SwipeCarousel extends Carousel {
 
   #swipeStart(e) {
     this.#isDragging = true
-    this.#startPosX = e instanceof MouseEvent ? e.clientX : e.changedTouches[0].clientX
+    this.#startPosX = e instanceof MouseEvent ? e.pageX : e.changedTouches[0].pageX
   }
 
   #swipeEnd(e) {
     if (!this.#isDragging) return
 
-    this.#endPosX = e instanceof MouseEvent ? e.clientX : e.changedTouches[0].clientX
+    this.#endPosX = e instanceof MouseEvent ? e.pageX : e.changedTouches[0].pageX
     this.#isDragging = false
 
     const swipeDistance = this.#endPosX - this.#startPosX
@@ -48,9 +48,9 @@ class SwipeCarousel extends Carousel {
     this.container.addEventListener('dragstart', this.#preventDrag)
     this.container.addEventListener('touchstart', this.#swipeStart.bind(this)), { passive: true }
     this.container.addEventListener('mousedown', this.#swipeStart.bind(this))
-    this.slidesContainer.addEventListener('touchend', this.#swipeEnd.bind(this))
-    this.slidesContainer.addEventListener('mouseup', this.#swipeEnd.bind(this))
-    this.slidesContainer.addEventListener('mouseleave', this.#mouseLeave.bind(this))
+    this.container.addEventListener('touchend', this.#swipeEnd.bind(this))
+    this.container.addEventListener('mouseup', this.#swipeEnd.bind(this))
+    this.container.addEventListener('mouseleave', this.#mouseLeave.bind(this))
   }
 }
 
