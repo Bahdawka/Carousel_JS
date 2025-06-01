@@ -1,6 +1,6 @@
 /*код на основі прототипів*/
 
-function Carousel() {
+/*function Carousel() {
 }
 
 Carousel.prototype = {
@@ -173,5 +173,5 @@ SwipeCarousel.prototype.swipeEndHandler = function (e) {
 }
 
 const carousel = new SwipeCarousel()
-carousel.init()
+carousel.init()*/
 
